@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="template.master.cs" Inherits="UTN.template" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cursos Libres de la UTN">
+    <meta name="author" content="Luis Miguel Bolaños Mejías">
+
+    <title>UTN | Cursos Libres</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="icon" 
+      type="image/png" 
+      href="image/utnblue.png" style="width:100%">
+    <!-- Custom styles for this template -->
+    <style>
+        * {
+    margin: 0;
+}
+
+.footer {
+  position: fixed;
+  text-align:center;
+  bottom: 0px;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: black;
+  color:whitesmoke;
+}
+      body {
+        padding-top: 54px;
+      }
+      @media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      }
+
+    </style>
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:navy">
+      <div class="container">
+        <a class="navbar-brand" href="default.aspx">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/image/utnwhite.png" Width="40px" style="position:fixed" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cursos Libres</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="default.aspx"><img src="image/PNG/home.png" style="width:30px"/>Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item" style="color:white">
+              <a class="nav-link" href="#" style="color:white" id="myBtn"><img src="image/PNG/login.png" style="width:30px"/>Entrar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      <form runat="server">
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+            <div>
+                <a class="navbar-brand" href="default.aspx">
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/image/utnblue.png" Width="40px" style="position:fixed" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cursos Libres</a>
+            </div>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Usuario</label>
+                <asp:TextBox ID="txtUsuario" runat="server" type="text" class="form-control" placeholder="Nombre de Usuario"></asp:TextBox>
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Clave</label>
+                <asp:TextBox ID="txtClave" runat="server"  type="text" class="form-control" placeholder="Clave"></asp:TextBox>
+            </div>
+              <button type="submit" class="btn btn-info btn-block"><span class="glyphicon glyphicon-off"></span> Iniciar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+    <!-- Page Content -->
+    <div class="container">
+    <asp:ContentPlaceHolder ID="Body" runat="server"></asp:ContentPlaceHolder>
+    </div>
+      
+       
+<div class="footer" style="background-color:navy">
+  <p>&#9400; <%=DateTime.Now.Year %> - UTN | Cursos Libres</p>
+</div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      
+      <script>
+          $(document).ready(function () {
+              $("#myBtn").click(function () {
+                  $("#myModal").modal();    
+                  $('#myModal').on('shown.bs.modal', function () {
+                      $('#txtUsuario').focus();
+                  })  
+              });
+          });
+</script>
+          </form>
+  </body>
+
+</html>
