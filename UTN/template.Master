@@ -44,6 +44,13 @@
 
     </style>
     <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+      <script>    
+          function openModal() {
+              $('#myModal').modal('show');
+              $('#txtUsuario').focus();
+              $('#txtUsuario').text = "";
+          }
+</script>
   </head>
 
   <body>
@@ -59,12 +66,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="default.aspx"><img src="image/PNG/home.png" style="width:30px"/>Inicio
+              <a class="nav-link" href="default.aspx">Inicio
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item" style="color:white">
-              <a class="nav-link" href="#" style="color:white" id="myBtn"><img src="image/PNG/login.png" style="width:30px"/>Entrar</a>
+                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
             </li>
           </ul>
         </div>
@@ -80,7 +87,7 @@
         <div class="modal-header" style="padding:35px 50px;">
             <div>
                 <a class="navbar-brand" href="default.aspx">
-            <asp:Image ID="Image2" runat="server" ImageUrl="~/image/utnblue.png" Width="40px" style="position:fixed" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cursos Libres</a>
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/image/utnblue.png" Width="60px" style="position:fixed" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cursos Libres</a>
             </div>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
@@ -94,11 +101,13 @@
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Clave</label>
                 <asp:TextBox ID="txtClave" runat="server"  type="text" class="form-control" placeholder="Clave"></asp:TextBox>
             </div>
-              <button type="submit" class="btn btn-info btn-block"><span class="glyphicon glyphicon-off"></span> Iniciar</button>
+              <asp:Button ID="Button1" CssClass="btn btn-info btn-block" runat="server" Text="Iniciar" OnClick="Button1_Click" />
           </form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+            <p>Olvidó su clave?</p>
+            <p>Registrarse</p>
         </div>
       </div>
       
@@ -124,9 +133,15 @@
                   $("#myModal").modal();    
                   $('#myModal').on('shown.bs.modal', function () {
                       $('#txtUsuario').focus();
+                      $('#txtUsuario').text="";
                   })  
               });
           });
+</script>
+          <script type="text/javascript">
+              function openModal() {
+                  $('#myModal').modal('show');
+              }
 </script>
           </form>
   </body>

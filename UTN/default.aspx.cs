@@ -11,6 +11,13 @@ namespace UTN
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack) {
+                try
+                {
+                    lblUser.Text = "Bienvenido(a) "+Session["user"].ToString();
+                }
+                catch (Exception ex) { } 
+            }
 
         }
     }
